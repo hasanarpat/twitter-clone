@@ -17,7 +17,8 @@ const links = [
     logo: <FaXTwitter />,
     title: "",
     href: "/",
-  },{
+  },
+  {
     logo: <BsSearch />,
     title: "Explore",
     href: "/explore",
@@ -66,7 +67,7 @@ const links = [
 
 const LeftBar = () => {
   return (
-    <nav className="flex flex-col w-[12%] xl:w-[25%] h-screen justify-between items-center p-4 sticky top-0 left-0">
+    <nav className="flex flex-col w-[12%] xl:w-[20%] h-screen justify-between items-center  sticky top-0 left-0">
       <section className="flex flex-col gap-3 w-[85%] items-start">
         {links.map((link, i) => (
           <Link
@@ -78,14 +79,14 @@ const LeftBar = () => {
             <span className="hidden xl:flex text-lg">{link.title}</span>
           </Link>
         ))}
-        <button className="flex items-center justify-center bg-blue-500 rounded-full xl:rounded-3xl w-full h-[55px] xl:h-auto xl:px-8 xl:py-3 text-center font-bold text-lg">
+        <button className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 transition-colors duration-75 ease-linear rounded-full xl:rounded-3xl w-[55px] xl:w-full h-[55px] xl:h-auto xl:px-8 xl:py-3 text-center font-bold text-lg">
           <span className="xl:hidden">
             <FaFeatherAlt />
           </span>
           <span className="hidden xl:flex">Send</span>
         </button>
       </section>
-      <section className="w-full h-12 flex items-center xl:w-[85%] justify-center xl:justify-between xl:px-2 rounded-3xl hover:bg-zinc-800">
+      <section className="w-full h-12 flex items-center xl:w-[85%] justify-center xl:justify-between xl:px-2 rounded-3xl hover:bg-zinc-800 cursor-pointer">
         <div className="flex items-center gap-2">
           <div className="relative w-10 h-10">
             <Image

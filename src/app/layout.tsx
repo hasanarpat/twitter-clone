@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="min-h-screen flex mx-auto w-[80%] md:w-[95%] xl:w-[95%] 2xl:w-[70%]">
+        <div className="min-h-screen flex mx-auto md:w-[95%] xl:w-[95%] 2xl:w-[70%]">
           <LeftBar />
-          <div className="bg-rose-500 w-[88%] lg:w-[58%] xl:w-[45%]">
+          <div className="bg-blue-500 w-[88%] lg:w-[58%] xl:w-[48%]">
           {children}
           </div>
           <RightBar />
