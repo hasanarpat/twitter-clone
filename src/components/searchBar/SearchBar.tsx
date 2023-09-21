@@ -17,7 +17,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="sticky top-0 bg-black py-1">
+    <div className="sticky top-0 bg-black py-1 z-10">
       <div className="relative">
         <div
           className={`w-full flex items-center py-2 px-2 gap-4 text-base text-gray-400 bg-zinc-800 rounded-3xl ${

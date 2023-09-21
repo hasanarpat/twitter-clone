@@ -3,8 +3,8 @@ import { CgMore, CgMoreO } from "react-icons/cg";
 
 const topics = [
   {
-    header: "Topics on USA",
-    topic: "Uefa League",
+    header: "Trending Topics",
+    topic: "GrindCore - Turkish Grind",
     interactions: "12 B posts",
   },
   {
@@ -14,31 +14,31 @@ const topics = [
   },
   {
     header: "Sports",
-    topic: "Baseball",
+    topic: "Yağlı Güreş",
     interactions: "12 B posts",
   },
   {
     header: "On Topic",
-    topic: "Game Of Thrones",
+    topic: "Berserk",
     interactions: "12 B posts",
   },
   {
-    header: "Topics on USA",
+    header: "Trending Topics",
     topic: "TypeScript",
     interactions: "12 B posts",
   },
   {
-    header: "Topics on USA",
-    topic: "Swiss Watches",
+    header: "Trending Topics",
+    topic: "Neon Genesis: Evangelion",
     interactions: "12 B posts",
   },
   {
     header: "Sports",
-    topic: "MMA K.I.N.G",
+    topic: "MMA K.I.N.G.",
     interactions: "12 B posts",
   },
   {
-    header: "Topics on USA",
+    header: "Trending Topics",
     topic: "Marduk",
     interactions: "12 B posts",
   },
@@ -48,8 +48,8 @@ const topics = [
     interactions: "12 B posts",
   },
   {
-    header: "Topics on USA",
-    topic: "Uefa League",
+    header: "Trending Topics",
+    topic: "Nohut Dürüm",
     interactions: "12 B posts",
   },
 ];
