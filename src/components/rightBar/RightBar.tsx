@@ -6,6 +6,17 @@ import Footer from "../footer/Footer";
 import SuggestToFollow from "../suggestToFollow/SuggestToFollow";
 import MessageBox from "../messageBox/MessageBox";
 
+const footerList = [
+  "Hizmet Şartları",
+  "Gizlilik Politikası",
+  "Çerez Politikası",
+  "Imprint",
+  "Erişilebilirlik",
+  "Reklam bilgisi",
+  "Daha fazla",
+  "© 2023 X Corp.",
+];
+
 const RightBar = () => {
   return (
     <aside className=" hidden lg:flex lg:w-[30%] xl:w-[32%] flex-col items-center grow w-full p-2 pl-6 h-max sticky top-0 right-0">
@@ -14,7 +25,7 @@ const RightBar = () => {
         <Recommendation />
         <Topics />
         <SuggestToFollow />
-        <Footer />
+        <Footer list={[...footerList]} />
       </section>
     </aside>
   );
