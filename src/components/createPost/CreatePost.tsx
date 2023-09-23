@@ -1,6 +1,7 @@
 "use client";
+import { ITweet } from "@/types/Tweet";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineGif, AiOutlineSmile } from "react-icons/ai";
 import { BiSolidCalendarHeart } from "react-icons/bi";
 import { CgOptions } from "react-icons/cg";
@@ -8,10 +9,51 @@ import { CiImageOn } from "react-icons/ci";
 import { FaLocationDot } from "react-icons/fa6";
 
 const CreatePost = () => {
+  const initialState: ITweet = {
+    userId: 0,
+    desc: "",
+    media: [],
+    comments: 0,
+    likes: 0,
+    retweets: 0,
+    impressions: 0,
+  };
+
   const [disable, setDisable] = useState(true);
+  const [openImgInput, setOpenImgInput] = useState(false);
+  const [imgUrl, setImgUrl] = useState("");
+
+  const [tweet, setTweet] = useState<ITweet>(initialState);
 
   const handleText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDisable(false);
+    setTweet((prev) => {
+      return {
+        ...prev,
+        desc: e.target.value,
+      };
+    });
+  };
+
+  const postTweet = async () => {
+    const response = await fetch("http://localhost:3000/api/tweets", {
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify(tweet),
+    });
+    console.log(response);
+  };
+
+  const handleImageUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setImgUrl("")
+    setImgUrl(e.target.value);
+    console.log(imgUrl);
+    if (tweet?.media && tweet.media?.length > 0) {
+      tweet.media[0].url = imgUrl;
+    } else {
+      tweet.media?.push({ url: imgUrl });
+    }
+    console.log(imgUrl);
   };
 
   return (
@@ -37,9 +79,24 @@ const CreatePost = () => {
         </div>
         <div className="w-full flex flex-col pl-16 ">
           <hr className="w-full pl-16 my-2" />
+          {
+            // PSEUDO DESIGN FOR IMAGE UPLOADING
+          }
+          {openImgInput && (
+            <input
+              type="text"
+              placeholder="Paste Image URL"
+              value={imgUrl}
+              onChange={handleImageUrl}
+              className="bg-transparent"
+            />
+          )}
           <div className="flex w-full justify-between items-center">
             <div className="text-lg flex items-center gap-3 text-blue-500">
-              <span className="cursor-pointer">
+              <span
+                className="cursor-pointer"
+                onClick={() => setOpenImgInput((prev) => !prev)}
+              >
                 <CiImageOn />{" "}
               </span>
               <span className="cursor-pointer">
@@ -60,6 +117,7 @@ const CreatePost = () => {
             </div>
             <button
               disabled={disable ? true : false}
+              onClick={postTweet}
               className="bg-blue-500 hover:bg-blue-600 text-white text-md font-medium rounded-3xl px-3 py-1 disabled:opacity-80"
             >
               Send

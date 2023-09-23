@@ -2,12 +2,10 @@ import { NextResponse } from "next/server"
 import { connect} from "@/utils/db"
 import { Tweet} from "@/models/Tweet"
 
-export const GET = async (request,response)=>{
+export const GET = async (request,{params})=>{
     
-    const url = new URL(request.url)
-
-    const status = url.searchParams.get("status")
-    console.log("status"+status)
+   const {status} = params
+   console.log(status)
 
     try {
         await connect()
