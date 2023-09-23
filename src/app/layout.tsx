@@ -20,13 +20,13 @@ export default function RootLayout({
 
   
   /*pseudo auth */
-  let sessionTrue = false;
+  let sessionTrue = true;
 
   const SessionLayout = ({ children }: { children: React.ReactNode }): React.ReactNode => {
     return (
       <div className="min-h-screen flex mx-auto md:w-[95%] xl:w-[95%] 2xl:w-[70%]">
         <LeftBar />
-        <div className="bg-blue-500 w-[88%] lg:w-[58%] xl:w-[48%]">
+        <div className="w-[88%] lg:w-[58%] xl:w-[48%]">
           {children}
         </div>
         <RightBar />
