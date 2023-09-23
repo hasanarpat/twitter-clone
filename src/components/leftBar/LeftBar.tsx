@@ -19,14 +19,14 @@ const links = [
     href: "/",
   },
   {
-    logo: <BsSearch />,
-    title: "Explore",
-    href: "/explore",
-  },
-  {
     logo: <BiSolidHomeCircle />,
     title: "Homepage",
     href: "/",
+  },
+  {
+    logo: <BsSearch />,
+    title: "Explore",
+    href: "/explore",
   },
   {
     logo: <RiNotification2Line />,
@@ -75,7 +75,7 @@ const LeftBar = () => {
             href={link.href}
             className=" flex items-center p-2 rounded-3xl gap-4 justify-center  xl:justify-normal  font-medium hover:bg-zinc-800"
           >
-            <span className="text-2xl">{link.logo}</span>
+            <span className="text-[26px]">{link.logo}</span>
             <span className="hidden xl:flex text-lg">{link.title}</span>
           </Link>
         ))}

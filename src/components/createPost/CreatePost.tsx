@@ -26,7 +26,10 @@ const CreatePost = () => {
   const [tweet, setTweet] = useState<ITweet>(initialState);
 
   const handleText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setDisable(false);
+    if (tweet.desc.length > 0) setDisable(false);
+    else {
+      setDisable(true);
+    }
     setTweet((prev) => {
       return {
         ...prev,
@@ -45,7 +48,7 @@ const CreatePost = () => {
   };
 
   const handleImageUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setImgUrl("")
+    setImgUrl("");
     setImgUrl(e.target.value);
     console.log(imgUrl);
     if (tweet?.media && tweet.media?.length > 0) {
@@ -78,7 +81,6 @@ const CreatePost = () => {
           ></textarea>
         </div>
         <div className="w-full flex flex-col pl-16 ">
-          <hr className="w-full pl-16 my-2" />
           {
             // PSEUDO DESIGN FOR IMAGE UPLOADING
           }
@@ -92,9 +94,9 @@ const CreatePost = () => {
             />
           )}
           <div className="flex w-full justify-between items-center">
-            <div className="text-lg flex items-center gap-3 text-blue-500">
+            <div className="text-lg flex items-center gap-3 text-sky-400">
               <span
-                className="cursor-pointer"
+                className="cursor-pointer text-2xl"
                 onClick={() => setOpenImgInput((prev) => !prev)}
               >
                 <CiImageOn />{" "}
