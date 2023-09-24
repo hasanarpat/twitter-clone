@@ -1,6 +1,8 @@
 "use client";
 import { ITweet } from "@/types/Tweet";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { AiOutlineGif, AiOutlineSmile } from "react-icons/ai";
 import { BiSolidCalendarHeart } from "react-icons/bi";
@@ -9,14 +11,17 @@ import { CiImageOn } from "react-icons/ci";
 import { FaLocationDot } from "react-icons/fa6";
 
 const CreatePost = () => {
+  const { data: session, status } = useSession();
+  console.log(session);
+
   const initialState: ITweet = {
     userId: 0,
     desc: "",
     media: [],
-    comments: 0,
-    likes: 0,
-    retweets: 0,
-    impressions: 0,
+    comments: [],
+    likes: [],
+    retweets: [],
+    impressions: [],
   };
 
   const [disable, setDisable] = useState(true);
@@ -64,13 +69,19 @@ const CreatePost = () => {
       <form className="flex flex-col items-center" onSubmit={postTweet}>
         <div className="flex items-start w-full gap-x-4">
           <div className="w-[50px] h-[50px] rounded-full relative">
-            <Image
-              alt="profile"
-              src="https://images.pexels.com/photos/18180323/pexels-photo-18180323/free-photo-of-kent-sanat-bina-insaat.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
-              objectFit="cover"
-              className="rounded-full"
-              fill
-            />
+            <Link href="/profile">
+              <Image
+                alt="profile"
+                src={
+                  status == "authenticated" && session.user?.image
+                    ? session.user?.image
+                    : "https://images.pexels.com/photos/18180323/pexels-photo-18180323/free-photo-of-kent-sanat-bina-insaat.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                }
+                objectFit="cover"
+                className="rounded-full"
+                fill
+              />
+            </Link>
           </div>
           <textarea
             placeholder="What's going on?"

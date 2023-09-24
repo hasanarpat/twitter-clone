@@ -11,6 +11,7 @@ import { CgMoreO } from "react-icons/cg";
 import { FaFeatherAlt } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
+import SignOut from "../signOut/SignOut";
 
 const links = [
   {
@@ -79,6 +80,7 @@ const LeftBar = () => {
             <span className="hidden xl:flex text-lg">{link.title}</span>
           </Link>
         ))}
+        <SignOut/>
         <button className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 transition-colors duration-75 ease-linear rounded-full xl:rounded-3xl w-[55px] xl:w-full h-[55px] xl:h-auto xl:px-8 xl:py-3 text-center font-bold text-lg">
           <span className="xl:hidden">
             <FaFeatherAlt />

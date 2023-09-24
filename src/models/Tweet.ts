@@ -1,5 +1,5 @@
-import { ITweet, IMedia } from "@/types/Tweet";
-import mongoose, { Schema, model } from "mongoose";
+import { ITweet } from "@/types/Tweet";
+import mongoose, { Schema } from "mongoose";
 
 const TweetSchema = new Schema<ITweet>({
     userId:{type:Number},
@@ -7,10 +7,10 @@ const TweetSchema = new Schema<ITweet>({
     media:{
         type:Array,
     },
-    comments:{type:Number},
-    likes:{type:Number},
-    retweets:{type:Number},
-    impressions:{type:Number}
+    comments:Array,
+    likes:Array,
+    retweets:Array,
+    impressions:Array,
 },{timestamps:true})
 
 export const Tweet =  mongoose.models.Tweet || mongoose.model("Tweet",TweetSchema)

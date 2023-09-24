@@ -14,7 +14,7 @@ const SocialSignUp = () => {
         <AiFillGoogleCircle />
         SignUp With Google
       </button>
-      <button className="flex items-center justify-center text-lg font-medium gap-4 bg-white text-black rounded-3xl py-1 ">
+      <button onClick={()=>signIn("apple")} className="flex items-center justify-center text-lg font-medium gap-4 bg-white text-black rounded-3xl py-1 ">
         <BsApple />
         SignUp With Apple
       </button>
@@ -23,7 +23,7 @@ const SocialSignUp = () => {
         or
         <hr className="inline-block w-1/3 text-xs" />
       </span>
-      <button onClick={()=>signIn('twitter')} className="bg-blue-500 text-white text-md font-medium rounded-3xl py-2">
+      <button onClick={()=>signIn("github")} className="bg-blue-500 text-white text-md font-medium rounded-3xl py-2">
         Register an account
       </button>
       <span className="text-[11px] text-gray-400">
