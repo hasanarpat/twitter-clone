@@ -7,7 +7,7 @@ export const GET = async(request) => {
     try {
         await connect()
         const tweets = await Tweet.find({})
-        return new NextResponse(JSON.stringify(tweets),{
+        return new NextResponse(JSON.stringify(tweets.reverse()),{
             status:200
         })
 

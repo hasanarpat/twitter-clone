@@ -38,13 +38,13 @@ const CreatePost = () => {
     });
   };
 
-  const postTweet = async () => {
+  const postTweet = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const response = await fetch("http://localhost:3000/api/tweets", {
       method: "POST",
       mode: "cors",
       body: JSON.stringify(tweet),
     });
-    console.log(response);
   };
 
   const handleImageUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +61,7 @@ const CreatePost = () => {
 
   return (
     <section className="border-b-[1px] border-gray-200 p-3">
-      <div className="flex flex-col items-center">
+      <form className="flex flex-col items-center" onSubmit={postTweet}>
         <div className="flex items-start w-full gap-x-4">
           <div className="w-[50px] h-[50px] rounded-full relative">
             <Image
@@ -119,14 +119,14 @@ const CreatePost = () => {
             </div>
             <button
               disabled={disable ? true : false}
-              onClick={postTweet}
+              type="submit"
               className="bg-blue-500 hover:bg-blue-600 text-white text-md font-medium rounded-3xl px-3 py-1 disabled:opacity-80"
             >
               Send
             </button>
           </div>
         </div>
-      </div>
+      </form>
     </section>
   );
 };

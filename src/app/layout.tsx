@@ -3,7 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import RightBar from "@/components/rightBar/RightBar";
-import { ReactNode } from "react";
+import NextAuthProvider from "@/components/NextAuthProvider/NextAuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,39 +17,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
-  
-  /*pseudo auth */
-  let sessionTrue = true;
-
-  const SessionLayout = ({ children }: { children: React.ReactNode }): React.ReactNode => {
-    return (
-      <div className="min-h-screen flex mx-auto md:w-[75%] xl:w-[95%] 2xl:w-[70%]">
-        <LeftBar />
-        <div className="w-[88%] lg:w-[58%] xl:w-[48%]">
-          {children}
-        </div>
-        <RightBar />
-      </div>
-    );
-  };
-
-  const NoSessionLayout = ({
-    children,
-  }: {
-    children: React.ReactNode;
-  }): React.ReactNode => {
-    return <>{children}</>;
-  };
-
   return (
     <html lang="en">
       <body className={inter.className}>
-        {sessionTrue ? (
-          <SessionLayout>{children}</SessionLayout>
-        ) : (
-          <NoSessionLayout>{children}</NoSessionLayout>
-        )}
+        <NextAuthProvider>
+          <div className="min-h-screen flex mx-auto md:w-[75%] xl:w-[95%] 2xl:w-[70%]">
+            <LeftBar />
+            <div className="w-[88%] lg:w-[58%] xl:w-[48%]">{children}</div>
+            <RightBar />
+          </div>
+        </NextAuthProvider>
       </body>
     </html>
   );

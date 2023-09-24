@@ -1,6 +1,8 @@
+"use client"
 import React from "react";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { BsApple } from "react-icons/bs";
+import { signIn } from "next-auth/react"
 
 const SocialSignUp = () => {
   return (
@@ -8,7 +10,7 @@ const SocialSignUp = () => {
       <h2 className="font-extrabold text-2xl mb-4 md:text-3xl">
         Register now.
       </h2>
-      <button className="flex items-center justify-center text-lg font-medium gap-4 bg-white text-black rounded-3xl py-1 ">
+      <button onClick={()=>signIn('google')} className="flex items-center justify-center text-lg font-medium gap-4 bg-white text-black rounded-3xl py-1 ">
         <AiFillGoogleCircle />
         SignUp With Google
       </button>
@@ -21,7 +23,7 @@ const SocialSignUp = () => {
         or
         <hr className="inline-block w-1/3 text-xs" />
       </span>
-      <button className="bg-blue-500 text-white text-md font-medium rounded-3xl py-2">
+      <button onClick={()=>signIn('twitter')} className="bg-blue-500 text-white text-md font-medium rounded-3xl py-2">
         Register an account
       </button>
       <span className="text-[11px] text-gray-400">
