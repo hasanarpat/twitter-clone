@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import RightBar from "@/components/rightBar/RightBar";
 import NextAuthProvider from "@/components/NextAuthProvider/NextAuthProvider";
+import AuthLayout from "@/components/AuthLayout/AuthLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +22,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextAuthProvider>
-          <div className="min-h-screen flex mx-auto md:w-[75%] xl:w-[95%] 2xl:w-[70%]">
-            <LeftBar />
-            <div className="w-[88%] lg:w-[58%] xl:w-[48%]">{children}</div>
-            <RightBar />
-          </div>
+          <AuthLayout>
+            <div className="min-h-screen flex mx-auto md:w-[75%] xl:w-[95%] 2xl:w-[70%]">
+              <LeftBar />
+              <div className="w-[88%] lg:w-[58%] xl:w-[48%]">{children}</div>
+              <RightBar />
+            </div>
+          </AuthLayout>
         </NextAuthProvider>
       </body>
     </html>

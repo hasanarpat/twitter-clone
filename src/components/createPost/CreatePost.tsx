@@ -3,7 +3,7 @@ import { ITweet } from "@/types/Tweet";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineGif, AiOutlineSmile } from "react-icons/ai";
 import { BiSolidCalendarHeart } from "react-icons/bi";
 import { CgOptions } from "react-icons/cg";
@@ -22,6 +22,9 @@ const CreatePost = () => {
     likes: [],
     retweets: [],
     impressions: [],
+    username: "",
+    userNickName: "",
+    userPic: "",
   };
 
   const [disable, setDisable] = useState(true);
@@ -43,8 +46,23 @@ const CreatePost = () => {
     });
   };
 
+  useEffect(()=>{
+    if(status=="authenticated"){
+      setTweet((prev) => {
+        return {
+          ...prev,
+          username: session?.user.name,
+          userNickName: session?.user.email,
+          userPic: session?.user.image,
+        };
+      });
+    }
+    console.log(tweet+"------------tweet-------")
+  },[status])
+
   const postTweet = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
     const response = await fetch("http://localhost:3000/api/tweets", {
       method: "POST",
       mode: "cors",

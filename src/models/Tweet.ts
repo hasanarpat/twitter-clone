@@ -11,6 +11,9 @@ const TweetSchema = new Schema<ITweet>({
     likes:Array,
     retweets:Array,
     impressions:Array,
+    username:{type:String},
+    userNickName:{type:String},
+    userPic:{type:String}
 },{timestamps:true})
 
 export const Tweet =  mongoose.models.Tweet || mongoose.model("Tweet",TweetSchema)

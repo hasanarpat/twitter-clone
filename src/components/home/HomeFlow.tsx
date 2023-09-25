@@ -7,6 +7,7 @@ import { FaRegComment, FaRegHeart, FaHeart } from "react-icons/fa";
 import { FaRetweet } from "react-icons/fa6";
 import { RiBarChartLine } from "react-icons/ri";
 import { AiOutlineUpload } from "react-icons/ai";
+import Link from "next/link";
 
 const HomeFlow = () => {
   const [data, setData] = useState<ITweet[] | null>([]);
@@ -37,7 +38,11 @@ const HomeFlow = () => {
                       <div className="relative rounded-full w-[50px] h-[50px]">
                         <Image
                           alt=""
-                          src={item.media[0].url}
+                          src={
+                            item.userPic
+                              ? item.userPic
+                              : "https://images.pexels.com/photos/17311759/pexels-photo-17311759/free-photo-of-siyah-ve-beyaz-el-su-kol-saati.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                          }
                           fill
                           className="object-cover rounded-full"
                         />
@@ -52,12 +57,15 @@ const HomeFlow = () => {
                         />
                       </div>
                     )}
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold text-md">Jane Doe</span>
-                      <span className="text-sm text-gray-500">
-                        @janedoex · 1 hr
+                    <Link href={`/status/${item._id}`} className="flex items-center gap-2">
+                      <span className="font-semibold text-md">
+                        {item.username ? item.username : "Jane Doe"}
                       </span>
-                    </div>
+                      <span className="text-sm text-gray-500">
+                        @{item.userNickName ? item.userNickName : "Jane Doe"} ·
+                        <span> {item.createdAt.toLocaleString()}</span>
+                      </span>
+                    </Link>
                   </div>
                   <MdMoreHoriz />
                 </div>
@@ -78,20 +86,22 @@ const HomeFlow = () => {
               )}
               <div className="p-3 pl-16  flex items-center w-full justify-between">
                 <span className="text-lg text-gray-400 font-light flex items-center gap-2 cursor-pointer hover:text-sky-600">
-                  <span className="hover:shadow shadow-sky-400"><FaRegComment /></span>
-                  <span className="text-[12px]">12</span>
+                  <span className="hover:shadow shadow-sky-400">
+                    <FaRegComment />
+                  </span>
+                  <span className="text-[12px]">{item.comments.length}</span>
                 </span>
                 <span className="text-lg text-gray-400 font-light flex items-center gap-2 cursor-pointer hover:text-green-400">
                   <FaRetweet />
-                  <span className="text-[12px]">12</span>
+                  <span className="text-[12px]">{item.retweets.length}</span>
                 </span>
                 <span className="text-lg text-gray-400 font-light flex items-center gap-2 cursor-pointer hover:text-rose-600">
                   <FaRegHeart />
-                  <span className="text-[12px]">12</span>
+                  <span className="text-[12px]">{item.likes.length}</span>
                 </span>
                 <span className="text-lg text-gray-400 font-light flex items-center gap-2 cursor-pointer hover:text-sky-600">
                   <RiBarChartLine />
-                  <span className="text-[12px]">12</span>
+                  <span className="text-[12px]">{item.impressions.length}</span>
                 </span>
                 <span className=" text-lg text-gray-400 font-light flex items-center gap-2 cursor-pointer hover:text-sky-600">
                   <AiOutlineUpload />

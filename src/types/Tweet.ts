@@ -6,6 +6,9 @@ export interface ITweet {
     likes:Array<Number>,
     retweets:Array<Number>,
     impressions:Array<Number>,
+    username:string,
+    userNickName:string,
+    userPic:string
 }
 
 export interface IMedia {

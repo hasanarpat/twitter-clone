@@ -12,6 +12,7 @@ import { FaFeatherAlt } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 import SignOut from "../signOut/SignOut";
+import ProfileOptions from "../leftBarProfileOptions/ProfileOptions";
 
 const links = [
   {
@@ -88,21 +89,8 @@ const LeftBar = () => {
           <span className="hidden xl:flex">Send</span>
         </button>
       </section>
-      <section className="w-full h-12 flex items-center xl:w-[85%] justify-center xl:justify-between xl:px-2 rounded-3xl hover:bg-zinc-800 cursor-pointer">
-        <div className="flex items-center gap-2">
-          <div className="relative w-10 h-10">
-            <Image
-              alt="profile picture"
-              src="https://images.pexels.com/photos/6625663/pexels-photo-6625663.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
-              fill
-              className=" object-cover rounded-full"
-            />
-          </div>
-          <div className="hidden xl:flex flex flex-col justify-between">
-            <span className=" font-bold text-base">Jane Smith</span>
-            <span className="text-gray-400 text-sm font-light">@janesmith</span>
-          </div>
-        </div>
+      <section className="w-full h-12 flex items-center xl:w-full justify-center xl:justify-between xl:px-2  rounded-3xl hover:bg-zinc-800 cursor-pointer pb-3">
+        <ProfileOptions/>
         <span className="hidden xl:flex text-xl">
           <CgMoreO />
         </span>
