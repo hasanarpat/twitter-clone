@@ -70,7 +70,7 @@ const links = [
 const LeftBar = () => {
   return (
     <nav className="flex flex-col w-[12%] xl:w-[20%] h-screen justify-between items-center  sticky top-0 left-0">
-      <section className="flex flex-col gap-3 w-[85%] items-start">
+      <section className="flex flex-col gap-1  xl:gap-3 w-full  items-center xl:items-start">
         {links.map((link, i) => (
           <Link
             key={i}
@@ -89,7 +89,7 @@ const LeftBar = () => {
           <span className="hidden xl:flex">Send</span>
         </button>
       </section>
-      <section className="w-full h-12 flex items-center xl:w-full justify-center xl:justify-between xl:px-2  rounded-3xl hover:bg-zinc-800 cursor-pointer pb-3">
+      <section className="w-full h-12 flex items-center xl:w-full justify-center xl:justify-between xl:px-2  rounded-3xl hover:bg-zinc-800 cursor-pointer pb-9 xl:pb-3">
         <ProfileOptions/>
         <span className="hidden xl:flex text-xl">
           <CgMoreO />

@@ -2,7 +2,7 @@ import { ITweet } from "@/types/Tweet";
 import mongoose, { Schema } from "mongoose";
 
 const TweetSchema = new Schema<ITweet>({
-    userId:{type:Number},
+    userId:{type:String},
     desc:{type:String},
     media:{
         type:Array,

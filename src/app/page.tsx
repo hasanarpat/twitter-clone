@@ -10,7 +10,7 @@ export default function Home() {
 console.log("----------------------")
   console.log(session,status)
   return (
-    <section className="mx-3 shadow-sm shadow-white">
+    <section className="mx-0 md:mx-3 shadow-sm shadow-white">
       <PageFlow />
       <CreatePost />
       <HomeFlow/>

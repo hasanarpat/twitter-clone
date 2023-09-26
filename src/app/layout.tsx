@@ -25,7 +25,7 @@ export default function RootLayout({
           <AuthLayout>
             <div className="min-h-screen flex mx-auto md:w-[75%] xl:w-[95%] 2xl:w-[70%]">
               <LeftBar />
-              <div className="w-[88%] lg:w-[58%] xl:w-[48%]">{children}</div>
+              <div className="w-full md:w-[88%] lg:w-[58%] xl:w-[48%]">{children}</div>
               <RightBar />
             </div>
           </AuthLayout>

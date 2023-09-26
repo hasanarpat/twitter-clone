@@ -21,6 +21,7 @@ const HomeFlow = () => {
     getData();
     console.log(data);
   }, []);
+  let date;
 
   if (data) {
     return (
@@ -63,7 +64,7 @@ const HomeFlow = () => {
                       </span>
                       <span className="text-sm text-gray-500">
                         @{item.userNickName ? item.userNickName : "Jane Doe"} ·
-                        <span> {item.createdAt.toLocaleString()}</span>
+                        <span> {date = new Date(item.createdAt).toDateString()}</span>
                       </span>
                     </Link>
                   </div>

@@ -1,5 +1,5 @@
 export interface ITweet {
-    userId:number,
+    userId:string,
     desc:string,
     media?:Array<IMedia>,
     comments:Array<Number>,

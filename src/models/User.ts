@@ -10,7 +10,8 @@ const UserSchema = new Schema<IUser>({
     tweets:Array<Number>,
     bio:{type:String},
     link:{type:String},
-    birdthDay:{type:Date}
+    birdthDay:{type:Date},
+    profilePic:{type:String}
 },{timestamps:true})
 
 export const User =  mongoose.models.User || mongoose.model("User",UserSchema)

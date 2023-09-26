@@ -7,5 +7,6 @@ export interface IUser {
     tweets:Array<Number>,
     bio:string,
     link:string,
-    birdthDay:Date
+    birdthDay:Date,
+    profilePic:string
 }
