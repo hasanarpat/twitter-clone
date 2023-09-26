@@ -10,9 +10,7 @@ import { RiBarChartLine } from "react-icons/ri";
 const Tweets = ({ item }: { item: ITweet }) => {
   let date;
   return (
-    <div
-      className="w-full flex flex-col p-3 shadow-sm shadow-slate-100"
-    >
+    <div className="w-full flex flex-col p-3 shadow-sm shadow-slate-100">
       <div className="flex flex-col items-start w-full justify-between mb-4">
         <div className="flex items-start w-full justify-between">
           <div className="flex items-start gap-4">

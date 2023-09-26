@@ -7,6 +7,7 @@ import { AiOutlineDisconnect } from "react-icons/ai";
 import Link from "next/link";
 import { CgCalendar } from "react-icons/cg";
 import Tweets from "@/components/Tweet/Tweets";
+import { ITweet } from "@/types/Tweet";
 
 const User = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
@@ -100,7 +101,7 @@ const User = async ({ params }: { params: { id: string } }) => {
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-400">
           <CgCalendar />
-          <span>Joined at {date=new Date(response.createdAt).toLocaleDateString()}</span>
+          <span>Joined at {date = new Date(response.createdAt).toLocaleDateString()}</span>
         </div>
         <div className="flex items-center justify-start gap-4">
           <div className="flex items-center gap-2">
@@ -137,9 +138,10 @@ const User = async ({ params }: { params: { id: string } }) => {
         </div>
       </div>
       {/*Tweets of user */}
-      {tweets.map((item) => (
+      {tweets.map((item:ITweet) => (
         <Tweets item={item} key={item._id} />
       ))}
+
     </div>
   );
 };
