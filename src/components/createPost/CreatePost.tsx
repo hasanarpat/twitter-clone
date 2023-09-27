@@ -22,7 +22,7 @@ const CreatePost = ({
   console.log(session);
 
   const initialState: ITweet = {
-    userId: 0,
+    userId: "0",
     desc: "",
     media: [],
     comments: [],
@@ -83,30 +83,19 @@ const CreatePost = ({
           },
         };
       });
-      console.log(comment.comment.desc);
+      console.log(comment);
     }
   };
 
   useEffect(() => {
     if (status == "authenticated") {
-      setTweet((prev) => {
-        return {
-          ...prev,
-          username: session?.user.name,
-          userNickName: session?.user.email,
-          userPic: session?.user.image,
-        };
-      });
-
       if (!tweetOrComment) {
-        console.log("it is a comment!!")
+        console.log("it is a comment!!");
         setComment((prev) => {
           return {
             ...prev,
+            userId:session?.user.userId ? session?.user.userId : session?.user.email, 
             tweetId: id,
-            userId: session.user.userId
-              ? session.user.userId
-              : session.user.name,
             comment: {
               ...prev.comment,
               username: session?.user.name,
@@ -115,8 +104,17 @@ const CreatePost = ({
             },
           };
         });
-        console.log("commennnnttttttttttttttttttt")
+        console.log("here is the comment.comment:");
         console.log(comment.comment);
+      } else {
+        setTweet((prev) => {
+          return {
+            ...prev,
+            username: session?.user.name,
+            userNickName: session?.user.email,
+            userPic: session?.user.image,
+          };
+        });
       }
     }
     console.log(tweet + "------------tweet-------");
@@ -134,12 +132,28 @@ const CreatePost = ({
 
   const postComment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    console.log("it is a comment!!");
+    setComment((prev) => {
+      return {
+        ...prev,
+        tweetId: id,
+        userId:session?.user.userId ? session?.user.userId : session?.user.email, 
+        comment: {
+          ...prev.comment,
+          username: session?.user.name,
+          userNickName: session?.user.email,
+          userPic: session?.user.image,
+        },
+      };
+    });
+    console.log("here is the comment.comment:");
+    console.log(comment.comment);
     const response = await fetch("http://localhost:3000/api/comments", {
       method: "POST",
       mode: "cors",
-      body: JSON.stringify(tweet),
+      body: JSON.stringify(comment),
     });
+    console.log(response);
   };
 
   const handleImageUrl = (e: React.ChangeEvent<HTMLInputElement>) => {

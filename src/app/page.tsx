@@ -12,7 +12,7 @@ console.log("----------------------")
   return (
     <section className="mx-0 md:mx-3 shadow-sm shadow-white">
       <PageFlow />
-      <CreatePost />
+      <CreatePost id="" tweetOrComment={true}/>
       <HomeFlow/>
     </section>
   );

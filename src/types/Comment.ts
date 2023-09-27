@@ -1,7 +1,15 @@
-import { ITweet } from "./Tweet";
-
 export interface IComment{
     userId:string,
     tweetId:string,
-    comment:ITweet
+    comment: {
+        desc: "",
+        media: [],
+        comments: [],
+        likes: [],
+        retweets: [],
+        impressions: [],
+        username: "",
+        userNickName: "",
+        userPic: "",
+      },
 }

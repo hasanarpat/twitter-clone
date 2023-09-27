@@ -24,7 +24,8 @@ const Status = async ({ params }: { params: { id: string } }) => {
     console.log("started to fetch");
     const response = await fetch(`http://localhost:3000/api/comments/${id}`);
     const data = await response.json();
-    console.log(data + "commentsssssssssssssssssssssssss");
+    console.log(data);
+    console.log("commentsssssssssssssssssssssssssssssssssssssssss")
     return data;
   };
 
