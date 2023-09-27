@@ -70,7 +70,7 @@ const links = [
 const LeftBar = () => {
   return (
     <nav className="flex flex-col w-[12%] xl:w-[20%] h-screen justify-between items-center  sticky top-0 left-0">
-      <section className="flex flex-col gap-1  xl:gap-3 w-full  items-center xl:items-start">
+      <section className="flex flex-col gap-1 md:gap-0  xl:gap-3 w-full  items-center xl:items-start">
         {links.map((link, i) => (
           <Link
             key={i}

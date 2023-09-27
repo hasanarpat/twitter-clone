@@ -57,14 +57,16 @@ const Tweets = ({ item }: { item: ITweet }) => {
 
       {item.media && (
         <div className="w-full  flex items-center justify-start pl-16">
-          <div className="relative w-2/3 h-[420px] rounded-2xl">
-            <Image
-              alt=""
-              src={item.media[0].url}
-              fill
-              className="rounded-2xl object-cover"
-            />
-          </div>
+          {item.media?.map((m, i) => (
+            <div className="relative w-2/3 h-[420px] rounded-2xl" key={i}>
+              <Image
+                alt=""
+                src={m.url}
+                fill
+                className="rounded-2xl object-cover"
+              />
+            </div>
+          ))}
         </div>
       )}
       <div className="p-3 pl-16  flex items-center w-full justify-between">
