@@ -64,7 +64,7 @@ const Comments = ({ comment }: { comment: IComment }) => {
         <p className="pl-16 font-light text-md">{comment.comment.desc}</p>
       </div>
 
-      {comment.comment.media && (
+      {comment.comment.media.length > 0 && (
         <div className="w-full  flex items-center justify-start pl-16">
           {comment.comment.media[0].url && (
             <div className="relative w-2/3 h-[420px] rounded-2xl">

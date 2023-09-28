@@ -12,6 +12,7 @@ import { RiBarChartLine } from "react-icons/ri";
 
 const Status = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
+  console.log(id)
   let date;
 
   const getData = async () => {
@@ -21,11 +22,13 @@ const Status = async ({ params }: { params: { id: string } }) => {
   };
 
   const getComments = async () => {
-    console.log("started to fetch");
-    const response = await fetch(`http://localhost:3000/api/comments/${id}`);
+    console.log(id)
+    const response = await fetch(`http://localhost:3000/api/comments/${id}`,{
+      method:"GET",
+      cache:"no-cache"
+    });
     const data = await response.json();
     console.log(data);
-    console.log("commentsssssssssssssssssssssssssssssssssssssssss")
     return data;
   };
 

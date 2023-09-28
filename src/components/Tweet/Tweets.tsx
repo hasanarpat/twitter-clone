@@ -6,6 +6,7 @@ import { AiOutlineUpload } from "react-icons/ai";
 import { FaRegComment, FaRegHeart, FaRetweet } from "react-icons/fa6";
 import { MdMoreHoriz } from "react-icons/md";
 import { RiBarChartLine } from "react-icons/ri";
+import Like from "./components/Like";
 
 const Tweets = ({ item }: { item: ITweet }) => {
   let date;
@@ -80,10 +81,7 @@ const Tweets = ({ item }: { item: ITweet }) => {
           <FaRetweet />
           <span className="text-[12px]">{item.retweets.length}</span>
         </span>
-        <span className="text-lg text-gray-400 font-light flex items-center gap-2 cursor-pointer hover:text-rose-600">
-          <FaRegHeart />
-          <span className="text-[12px]">{item.likes.length}</span>
-        </span>
+        <Like likes={item.likes} tweetId={item._id}/>
         <span className="text-lg text-gray-400 font-light flex items-center gap-2 cursor-pointer hover:text-sky-600">
           <RiBarChartLine />
           <span className="text-[12px]">{item.impressions.length}</span>
