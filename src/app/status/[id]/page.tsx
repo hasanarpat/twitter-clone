@@ -11,24 +11,24 @@ import { MdMoreHoriz } from "react-icons/md";
 import { RiBarChartLine } from "react-icons/ri";
 
 const Status = async ({ params }: { params: { id: string } }) => {
-  const id = params.id;
-  console.log(id)
-  let date;
 
+  const id = params.id;
+  let date;
+ 
+//Get tweet with id
   const getData = async () => {
     const res = await fetch(`http://localhost:3000/api/tweets/${id}`);
     const data = await res.json();
     return data;
   };
 
+//Get all comments that belong to tweet with its id
   const getComments = async () => {
-    console.log(id)
     const response = await fetch(`http://localhost:3000/api/comments/${id}`,{
       method:"GET",
       cache:"no-cache"
     });
     const data = await response.json();
-    console.log(data);
     return data;
   };
 
@@ -49,6 +49,7 @@ const Status = async ({ params }: { params: { id: string } }) => {
       key={response._id}
       className="w-full flex flex-col shadow-sm shadow-slate-100"
     >
+      {/*Tweet Header */}
       <section className="w-full flex p-3 items-center gap-8">
         <BackArrow />
         <span className="font-bold text-lg">Tweet</span>
@@ -93,12 +94,12 @@ const Status = async ({ params }: { params: { id: string } }) => {
           </div>
           <div className="flex items-center gap-2">
             <button className="bg-slate-100 text-black text-md font-medium rounded-3xl py-1 px-3">Follow</button>
-          <MdMoreHoriz style={{color:"gray"}}/>
+          <MdMoreHoriz style={{color:"gray",cursor:"pointer"}}/>
           </div>
         </div>
         <p className="mt-2 font-light text-md">{response.desc}</p>
       </section>
-
+      {/*Tweet Media */}
       {response.media && (
         <section className="w-full  flex items-center justify-start p-3 pt-0 pb-0">
           <div className="relative w-2/3 h-[420px] rounded-2xl">
@@ -111,6 +112,7 @@ const Status = async ({ params }: { params: { id: string } }) => {
           </div>
         </section>
       )}
+      {/*Tweet Date and analytics and Actions */}
       <section className="flex items-center gap-2 p-3">
         <span className="text-gray-400 font-extralight text-md">{(date = new Date(response.createdAt).toDateString())} ·</span>
         <span className="flex items-center gap-1">

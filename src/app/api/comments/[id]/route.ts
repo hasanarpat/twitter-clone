@@ -5,7 +5,6 @@ import { Comment } from "@/models/Comment"
 export const GET = async (request: NextRequest, { params }: { params: { id: string } })=>{
     
    const tweetID = params.id
-   console.log(tweetID + "from backend")
 
    try {
     await connect()

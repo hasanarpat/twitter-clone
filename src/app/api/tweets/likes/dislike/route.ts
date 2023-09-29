@@ -12,8 +12,11 @@ export const PUT = async (
   try {
     await connect();
     const tweet = await Tweet.findById(data.tweetId);
-    await tweet.likes.push(data.userId);
-    console.log(tweet.likes);
+    const newArray = await tweet.likes.filter(
+      (item: string) => item != data.userId
+    );
+    console.log(newArray);
+    tweet.likes = newArray;
     await tweet.save();
     return new NextResponse(JSON.stringify(tweet), { status: 201 });
   } catch (error) {

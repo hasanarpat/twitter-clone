@@ -1,10 +1,11 @@
 "use client";
 import { useSession } from "next-auth/react";
-import React, { useState } from "react";
+import React from "react";
 import { FaRegHeart } from "react-icons/fa6";
 import {FcLike} from "react-icons/fc"
 
 const Like = ({ likes, tweetId }: { likes: string[]; tweetId: string }) => {
+
   const { data: session } = useSession();
 
   const userId = session?.user?.userId
@@ -25,6 +26,15 @@ const Like = ({ likes, tweetId }: { likes: string[]; tweetId: string }) => {
 
   const handleUnlike = async ()=>{
     //will be completed
+    const response = await fetch(
+      `http://localhost:3000/api/tweets/likes/dislike`,
+      {
+        method: "PUT",
+        mode: "cors",
+        body: JSON.stringify({userId,tweetId}),
+      }
+    );
+    console.log(await response.json());
   }
 
 if(!likes.includes(userId)){

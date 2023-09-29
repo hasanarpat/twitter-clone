@@ -72,9 +72,10 @@ const Tweets = ({ item }: { item: ITweet }) => {
       )}
       <div className="p-3 pl-16  flex items-center w-full justify-between">
         <span className="text-lg text-gray-400 font-light flex items-center gap-2 cursor-pointer hover:text-sky-600">
-          <span className="hover:shadow shadow-sky-400">
+          <Link 
+              href={`/status/${item._id}`} className="hover:shadow shadow-sky-400">
             <FaRegComment />
-          </span>
+          </Link>
           <span className="text-[12px]">{item.comments.length}</span>
         </span>
         <span className="text-lg text-gray-400 font-light flex items-center gap-2 cursor-pointer hover:text-green-400">
